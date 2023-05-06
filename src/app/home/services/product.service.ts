@@ -32,8 +32,6 @@ export class ProductService {
 
   categories$ = this.http.get<string[]>(this.CATEGORIES_ENDPOINT)
 
-  selectedCategoryChanged(categoryId: string): void {
-    this.categorySubject.next(categoryId)
-  }
+  selectedCategoryChanged = (categoryId: string) => this.categorySubject.next(categoryId)
 
 }

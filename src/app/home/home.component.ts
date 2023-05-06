@@ -20,8 +20,6 @@ export class HomeComponent implements OnInit {
   products$ = this.productService.products$;
   categories$ = this.productService.categories$;
 
-  categoryChanged(event: any) {
-    this.productService.selectedCategoryChanged(event.target?.value)
-  }
+  categoryChanged = (event: any) => this.productService.selectedCategoryChanged(event.target?.value)
 
 }
