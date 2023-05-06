@@ -23,8 +23,10 @@ export class ProductService {
     this.categorySelectedAction$.pipe(
       tap(category => console.log(category)),
       switchMap(category =>
-        this.http.get<ProductApiResponse>(`${this.PRODUCTS_UNDER_CATEGORY_ENDPOINT}/${category}`)
-          .pipe(tap(data => console.log(data))))
+        category === "Showing All" ?
+          this.http.get<ProductApiResponse>(this.PRODUCTS_ENDPOINT) :
+          this.http.get<ProductApiResponse>(`${this.PRODUCTS_UNDER_CATEGORY_ENDPOINT}/${category}`)
+      )
     )
   )
 
