@@ -1,5 +1,5 @@
 <div *ngIf="product">
-  <strong>{{ product.title }}</strong>
+  <strong><a [routerLink]="['/products', product.id]">{{product.title }}</a></strong>
   <p>{{ product.rating }}</p>
   <img src="{{ product.thumbnail }}" alt="{{ product.title }}" />
   <p>{{ product.description }}</p>
