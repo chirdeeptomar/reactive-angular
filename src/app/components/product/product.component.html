@@ -1,0 +1,7 @@
+<div *ngIf="product">
+  <strong>{{ product.title }}</strong>
+  <p>{{ product.rating }}</p>
+  <img src="{{ product.thumbnail }}" alt="{{ product.title }}" />
+  <p>{{ product.description }}</p>
+  <p><span>£</span>{{ product.price }}</p>
+</div>

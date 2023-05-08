@@ -9,7 +9,6 @@
 
 <ul *ngIf="products$ | async as products">
   <li *ngFor="let product of products.products">
-    {{ product.title }}
-    {{ product.description }}
+    <app-product [product]="product"></app-product>
   </li>
 </ul>
