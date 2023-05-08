@@ -1,4 +1,4 @@
-export interface ProductApiResponse {
+export interface ProductPaginatedApiResponse {
   products: Product[]
   total: number
   skip: number
@@ -19,4 +19,6 @@ export interface Product {
   images: string[]
 }
 
-export type Category = string
+export type CategoryApiResponse = string[]
+
+export type ProductApiResponse = Product
