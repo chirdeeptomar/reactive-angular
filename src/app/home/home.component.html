@@ -1,14 +1,16 @@
 <h2>{{ title }}</h2>
 
-<select (change)="categoryChanged($event)">
-  <option>Showing All</option>
-  <option *ngFor="let category of categories$ | async as categories">
-    {{ category }}
-  </option>
-</select>
+<div *ngIf="vm$ | async as vm">
+  <select (change)="categoryChanged($event)">
+    <option>Showing All</option>
+    <option *ngFor="let category of vm.categories">
+      {{ category }}
+    </option>
+  </select>
 
-<ul *ngIf="products$ | async as products">
-  <li *ngFor="let product of products.products">
-    <app-product [product]="product"></app-product>
-  </li>
-</ul>
+  <ul *ngIf="vm.products as products">
+    <li *ngFor="let product of products.products">
+      <app-product [product]="product"></app-product>
+    </li>
+  </ul>
+</div>

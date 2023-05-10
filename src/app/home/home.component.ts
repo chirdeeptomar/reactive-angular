@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EMPTY_STRING } from '../app.constants';
+import { combineLatest, map } from 'rxjs';
 import { ProductService } from '../shared/services/product.service';
 
 @Component({
@@ -17,9 +18,16 @@ export class HomeComponent implements OnInit {
     this.title = "Our Products"
   }
 
-  products$ = this.productService.products$;
-  categories$ = this.productService.categories$;
+  private products$ = this.productService.products$;
+  private categories$ = this.productService.categories$;
 
   categoryChanged = (event: any) => this.productService.selectedCategory(event.target?.value)
 
+  vm$ = combineLatest([
+    this.products$,
+    this.categories$
+  ])
+    .pipe(
+      map(([products, categories]) => ({ products, categories }))
+    );
 }
